@@ -1,21 +1,26 @@
 <!doctype html>
-<html>
+<html ng-app="LunchCheck">
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="app.js"></script>
     <title>Lunch Checker</title>
   </head>
-  <body>
+  <body ng-controller="LunchCheckController">
     <div class="container">
       <h1 class="text-center">Lunch Checker</h1>
       <div class="col-xs-8 col-sm-8 col-md-10">
-        <input type="text" class="form-control" placeholder="list comma separated dishes you have for lunch"></input>
+        <input type="text" class="form-control"
+               placeholder="list comma separated dishes you have for lunch"
+               ng-model="dishes">
+        </input>
       </div>
       <div class="col-xs-4 col-sm-4 col-md-2">
-        <button class="btn btn-default"> Check If Too Much</button>
+        <button class="btn btn-default" ng-click="saveDishes()"> Check If Too Much</button>
       </div>
-      <div>
+      <div class="col-sm-12">
+        {{ result }}
       </div>
     </div>
   </body>
