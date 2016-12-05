@@ -46,8 +46,8 @@
     };
 
     service.buyItem = function (index) {
-      alreadyBought.push(toBuy.splice(index, 1));
-      console.log(alreadyBought);
+      alreadyBought.push(toBuy[index]);
+      toBuy.splice(index, 1);
     };
   }
 })();
