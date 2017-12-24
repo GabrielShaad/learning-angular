@@ -43,13 +43,16 @@
         }
 
         service.search = function (searchTerm) {
-            searched = menu.menu_items.filter(function (item) {
-                if (item.description.includes(searchTerm)) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
+            searched = [];
+            if (searchTerm) {
+                searched = menu.menu_items.filter(function (item) {
+                    if (item.description.includes(searchTerm)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                });
+            }
         }
 
         service.getItems = function () {
