@@ -1,0 +1,11 @@
+<div class="row">
+    <div class="col-md-12">
+        <ul>
+            <li ng-repeat="item in foundItems.items">
+                {{ item.short_name }} - {{ item.name }}
+                <button ng-click="foundItems.onRemove({index: $index})" style="float: right">Don't want this one!</button>
+                <p>{{ item.description }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
