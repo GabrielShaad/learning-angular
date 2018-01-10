@@ -12,16 +12,19 @@
         $stateProvider
             .state('home', {
                 url: '/',
-                templateUrl: 'index.html'
+                templateUrl: 'templates/home.html'
             })
 
-            .state('categories', {
+            .state('categoriesList', {
                 url: '/categories',
-                templateUrl: 'templates/categories.html',
-                controller: 'CategoriesController as categoriesCtrl',
+                templateUrl: 'templates/categories-list.html',
+                controller: 'CategoriesListController as categoriesList',
                 resolve: {
                     categories: ['MenuDataService', function (MenuDataService) {
-                        return MenuDataService.getAllCategories();
+                        return MenuDataService.getAllCategories()
+                            .then(function (resp) {
+                                return resp.data;
+                            });
                     }]
                 }
             });

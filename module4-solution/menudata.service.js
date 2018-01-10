@@ -6,25 +6,22 @@
 
     MenuDataService.$inject = ['$http'];
     function MenuDataService($http) {
+        var service = this;
         
-        function getAllCategories() {
+        service.getAllCategories = function () {
             return $http({
                 method: 'GET',
                 url: 'https://davids-restaurant.herokuapp.com/categories.json'
-            }).then(function (response) {
-                return response.data;
-            }).catch(function() {
-                console.log('Unsuccessful data request');
             });
         }
 
-        function getItemsForCategory(categoryShortName) {
-            var endpoint = 'https://davids-restaurant.herokuapp.com/menu_items.json?category=', categoryShortName
+        service.getItemsForCategory = function (categoryShortName) {
+            var endpoint = 'https://davids-restaurant.herokuapp.com/menu_items.json?category=', categoryShortName;
             return $http({
                 method: 'GET',
                 url: endpoint
             }).then(function (response) {
-                return response.data;
+                service.items = response.data;
             }).catch(function() {
                 console.log('Unsuccessful data request');
             });
