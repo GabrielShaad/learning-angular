@@ -27,6 +27,21 @@
                             });
                     }]
                 }
+            })
+
+            .state('itemsList', {
+                url: '/items-list/{category}',
+                templateUrl: 'templates/items-list.html',
+                controller: 'ItemsListController as itemsList',
+                resolve: {
+                    items: ['$stateParams', 'MenuDataService', 
+                          function ($stateParams, MenuDataService) {
+                            return MenuDataService.getItemsForCategory($stateParams.category)
+                                .then(function (resp) {
+                                    return resp.data;
+                                });
+                    }]
+                }
             });
     }
 })();
