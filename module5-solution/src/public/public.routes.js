@@ -40,6 +40,12 @@ function routeConfig ($stateProvider) {
           return MenuService.getMenuItems($stateParams.category);
         }]
       }
+    })
+    .state('public.newsletter', {
+      url: '/newsletter',
+      templateUrl: 'src/public/newsletter/signup.html',
+      controller: 'NewsletterController',
+      controllerAs: 'newsCtrl'
     });
 }
 })();
