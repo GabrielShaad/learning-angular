@@ -1,0 +1,88 @@
+<div class="container">
+    <h2 id="menu-categories-title" class="text-center">Sign Up to our Newsletter</h2>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form name="newsForm" novalidate>
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+
+                    <input type="text" class="form-control" name="firstName" placeholder="Enter your first name"
+                        ng-model="newsCtrl.firstName"
+                        ng-class="{'input-invalid': newsForm.firstName.$invalid && newsForm.firstName.$touched}"
+                        required
+                        minlength="3"
+                        ng-maxlength="20">
+
+                    <span
+                        ng-if="(newsForm.firstName.$error.minlength || newsForm.firstName.$error.required)
+                                && newsForm.firstName.$touched">
+                        First name must be at least 3 characters long
+                    </span>
+
+                    <span
+                        ng-if="newsForm.firstName.$error.maxlength && newsForm.firstName.$touched">
+                        First name must not be longer longer than 20 characters
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+
+                    <input type="text" class="form-control" name="lastName" placeholder="Enter your last name"
+                        ng-model="newsCtrl.lastName"
+                        ng-class="{'input-invalid': newsForm.lastName.$invalid && newsForm.lastName.$touched}"
+                        required
+                        minlength="3"
+                        ng-maxlength="20">
+
+                    <span
+                        ng-if="(newsForm.lastName.$error.minlength || newsForm.lastName.$error.required)
+                                && newsForm.lastName.$touched">
+                        Last name must be at least 3 characters long
+                    </span>
+
+                    <span
+                        ng-if="newsForm.lastName.$error.maxlength && newsForm.lastName.$touched">
+                        Last name must not be longer longer than 20 characters
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+
+                    <input type="email" class="form-control" name="email" placeholder="Enter your email address"
+                        ng-model="newsCtrl.email"
+                        ng-class="{'input-invalid': newsForm.email.$invalid && newsForm.email.$touched}"
+                        required>
+
+                    <span ng-if="newsForm.email.$invalid && newsForm.email.$touched">
+                        Must be a valid email address: handle@domain format
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+
+                    <input type="text" class="form-control" name="phone" placeholder="Enter your phone number: ###-###-####"
+                        ng-model="newsCtrl.phone"
+                        ng-class="{'input-invalid': newsForm.phone.$invalid && newsForm.phone.$touched}"
+                        pattern="(\d{3})-(\d{3})-(\d{4})"
+                        required>
+
+                    <span ng-if="newsForm.phone.$invalid && newsForm.phone.$touched">
+                        Phone must be in the format ###-###-####
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Favorite Dish</label>
+                    
+                    <input type="text" class="form-control" id="category" placeholder="Enter your favorite dish category number">
+                </div>
+
+                <button class="btn btn-primary" ng-disabled="newsForm.$invalid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+          
