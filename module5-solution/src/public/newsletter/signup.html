@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="NewsletterController as newsCtrl">
     <h2 id="menu-categories-title" class="text-center">Sign Up to our Newsletter</h2>
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
@@ -77,10 +77,26 @@
                 <div class="form-group">
                     <label for="category">Favorite Dish</label>
                     
-                    <input type="text" class="form-control" id="category" placeholder="Enter your favorite dish category number">
+                    <input type="text" class="form-control" id="category" placeholder="Enter your favorite dish category number"
+                        ng-model="newsCtrl.favorite">
                 </div>
 
-                <button class="btn btn-primary" ng-disabled="newsForm.$invalid">Submit</button>
+                <button class="btn btn-primary" 
+                    ng-disabled="newsForm.$invalid" 
+                    ng-click="newsCtrl.getFavorite(newsCtrl.favorite)">
+                    Submit
+                </button>
+
+                <br>
+                <br>
+
+                <span ng-if="newsCtrl.successResponse">
+                    Your information has been saved
+                </span>
+
+                <span ng-if="newsCtrl.successResponse === false">
+                    No such menu number exists
+                </span>
             </form>
         </div>
     </div>
