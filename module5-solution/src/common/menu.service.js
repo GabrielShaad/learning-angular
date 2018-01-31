@@ -8,7 +8,6 @@ angular.module('common')
 MenuService.$inject = ['$http', 'ApiPath'];
 function MenuService($http, ApiPath) {
   var service = this;
-  var favorite = {};
 
   service.getCategories = function () {
     return $http.get(ApiPath + '/categories.json').then(function (response) {
@@ -20,9 +19,13 @@ function MenuService($http, ApiPath) {
   service.getMenuItems = function (category) {
     category = category.toUpperCase();
     return $http.get(ApiPath + '/menu_items/' + category + '.json').then(function (response) {
-      favorite = response.data;
+      service.favorite = response.data;
       return response.data;
     });
+  };
+
+  service.setMyInfo = function (signedInfo) {
+    service.info = signedInfo;
   };
 
 }

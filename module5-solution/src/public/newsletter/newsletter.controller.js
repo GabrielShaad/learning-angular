@@ -12,10 +12,15 @@ function NewsletterController(MenuService) {
     MenuService.getMenuItems(category)
       .then(function() {
         $ctrl.successResponse = true;
+        $ctrl.setInfo($ctrl);
       })
       .catch(function() {
         $ctrl.successResponse = false;
       });
+  };
+
+  $ctrl.setInfo = function (info) {
+    MenuService.setMyInfo(info);
   };
 }
 

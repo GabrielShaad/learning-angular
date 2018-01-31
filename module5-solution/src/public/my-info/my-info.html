@@ -1,0 +1,32 @@
+<div class="container" ng-controller="MyInfoController as infoCtrl">
+    <h2 id="my-info-title" class="text-center">My Info</h2>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3" ng-if="infoCtrl.favorite">
+            <p class="text-center"> <strong>First Name:</strong> </p>
+            <p class="text-center">{{ infoCtrl.info.firstName }}</p>
+
+            <p class="text-center"> <strong>Last Name:</strong> </p>
+            <p class="text-center">{{ infoCtrl.info.lastName }}</p>
+
+            <p class="text-center"> <strong>Email Address:</strong> </p>
+            <p class="text-center">{{ infoCtrl.info.email }}</p>
+
+            <p class="text-center"> <strong>Phone Number:</strong> </p>
+            <p class="text-center">{{ infoCtrl.info.phone }}</p>
+
+            <p class="text-center"> <strong>Favorite Dish:</strong> </p>
+            <div class="text-center">
+                <img width="250" height="150" ng-src="{{infoCtrl.basePath}}/images/{{infoCtrl.favorite.short_name}}.jpg" 
+                    alt="{{infoCtrl.favorite.name}}">
+            </div>
+            <p class="text-center">{{ infoCtrl.favorite.name }}</p>
+            <p class="text-center">{{ infoCtrl.favorite.description }}</p>
+        </div>
+
+        <div class="col-md-6 col-md-offset-3" ng-if="!infoCtrl.favorite">
+            <h2 class="text-center">Not Signed Up Yet</h2>
+            <h2 class="text-center"><a ui-sref="public.newsletter">Sign Up Now!</a></h2>
+        </div>
+    </div>
+</div>
+          
